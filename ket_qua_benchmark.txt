@@ -1,0 +1,92 @@
+================================================================================
+KẾT QUẢ BENCHMARK RETRIEVAL — LAB 07 (K4-L3B)
+Chiến lược chia nhỏ (Chunker): heading
+Embedding Backend: Gemini API (gemini-embedding-001)
+Số tài liệu nguồn: 6 file | Tổng số chunks nạp: 30 chunks
+  • refund-methods-and-time            :  5 chunks
+  • return-eligibility                 :  5 chunks
+  • return-evidence                    :  5 chunks
+  • return-shipping-and-packaging      :  5 chunks
+  • return-window                      :  5 chunks
+  • seller-return-refund-obligations   :  5 chunks
+================================================================================
+
+[QUERY 1] Đối với thực phẩm tươi sống hoặc đông lạnh, người mua có bao nhiêu giờ để gửi yêu cầu trả hàng hoàn tiền?
+  Target Document : return-window.md
+  Metadata Filter : None
+  Gold Answer     : Thời hạn gửi yêu cầu ngắn hơn: 24 giờ kể từ khi đơn được cập nhật 'Giao hàng thành công'.
+  --- Top-3 Retrieval Results ---
+    1. score=0.8877 ★ [GOLD MATCH] id=return-window#3 | ## Thực phẩm tươi sống và đông lạnh  Đối với thực phẩm tươi sống hoặc đông lạnh, trừ lý do chưa nhận được hàng, thời hạn gửi yêu cầu ngắn hơ...
+    2. score=0.7672 ✔ [SAME DOC] id=return-window#1 | ## Đơn hàng thông thường  Đối với phần lớn đơn hàng, người mua có tối đa **15 ngày** kể từ khi đơn được cập nhật trạng thái “Giao hàng thành...
+    3. score=0.7435    id=return-eligibility#0 | # Điều kiện yêu cầu trả hàng hoặc hoàn tiền
+  --> Đánh giá: 2/2 điểm (Chứa chunk chuẩn: True, Gold Rank: 1)
+
+[QUERY 2] Thời gian nhận tiền hoàn về thẻ tín dụng hoặc ghi nợ thường mất bao nhiêu ngày làm việc?
+  Target Document : refund-methods-and-time.md
+  Metadata Filter : None
+  Gold Answer     : Thẻ tín dụng hoặc ghi nợ thường cần 7–14 ngày làm việc, tùy ngân hàng phát hành.
+  --- Top-3 Retrieval Results ---
+    1. score=0.7794 ✔ [SAME DOC] id=refund-methods-and-time#0 | # Phương thức và thời gian nhận tiền hoàn  Thời gian được tính sau khi Shopee chấp nhận hoàn tiền và phụ thuộc phương thức thanh toán ban đầ...
+    2. score=0.7680 ★ [GOLD MATCH] id=refund-methods-and-time#2 | ## Thẻ thanh toán  Thẻ nội địa Napas thường nhận tiền trong **2–5 ngày làm việc**. Thẻ tín dụng hoặc ghi nợ, bao gồm thẻ liên kết Apple Pay ...
+    3. score=0.7523 ✔ [SAME DOC] id=refund-methods-and-time#1 | ## Ví và tài khoản ngân hàng  Tiền hoàn về Ví ShopeePay thường được ghi nhận trong **24 giờ**, với điều kiện ví vẫn hoạt động bình thường. N...
+  --> Đánh giá: 2/2 điểm (Chứa chunk chuẩn: True, Gold Rank: 1)
+
+[QUERY 3] Khi gửi trả hàng cho Shopee, người mua có được viết hoặc dán thông tin vận chuyển trực tiếp lên hộp của nhà sản xuất không?
+  Target Document : return-shipping-and-packaging.md
+  Metadata Filter : None
+  Gold Answer     : Không viết hoặc dán trực tiếp thông tin vận chuyển lên hộp nguyên bản của nhà sản xuất; kiện hàng cần có hộp carton hoặc bao bì bên ngoài.
+  --- Top-3 Retrieval Results ---
+    1. score=0.8448 ✔ [SAME DOC] id=return-shipping-and-packaging#4 | ## Thông tin gửi trả (tiếp theo): Nếu chọn tự sắp xếp vận chuyển, người mua ghi “Trả hàng Shopee” trên hộp vận chuyển và gửi đến đúng địa ch...
+    2. score=0.8236 ✔ [SAME DOC] id=return-shipping-and-packaging#3 | ## Thông tin gửi trả (tiếp theo): Với hình thức đơn vị vận chuyển đến lấy hoặc trả tại bưu cục, người mua in và dán phiếu gửi hàng hoặc viết...
+    3. score=0.7778    id=seller-return-refund-obligations#4 | ## Chi phí vận chuyển trả hàng  Trong trường hợp người mua tự sắp xếp vận chuyển và đáp ứng điều kiện hỗ trợ, chi phí gửi trả có thể được Sh...
+  --> Đánh giá: 1/2 điểm (Chứa chunk chuẩn: False, Gold Rank: 1)
+
+[QUERY 4] Khi nghi ngờ hàng không chính hãng hoặc hàng giả, người mua cần cung cấp những bằng chứng nào?
+  Target Document : return-evidence.md
+  Metadata Filter : None
+  Gold Answer     : Bằng chứng gồm quét mã QR, kiểm tra số seri trên kênh của hãng, khác biệt bao bì thực nhận và bao bì chính hãng, hoặc video mở hộp liên tục.
+  --- Top-3 Retrieval Results ---
+    1. score=0.8199 ★ [GOLD MATCH] id=return-evidence#3 | ## Nội dung nên ghi nhận (tiếp theo): Khi nghi ngờ hàng không chính hãng, bằng chứng có thể gồm quá trình quét mã QR, kiểm tra số seri trên ...
+    2. score=0.7069 ✔ [SAME DOC] id=return-evidence#4 | ## Yêu cầu về chất lượng  Bằng chứng cần đủ sáng, đọc được thông tin quan trọng và không che khuất lỗi. Nội dung tải lên phải liên quan trực...
+    3. score=0.7032    id=return-eligibility#2 | ## Những tình huống có thể gửi yêu cầu (tiếp theo): Người mua có thể gửi yêu cầu khi chưa nhận được hàng dù hệ thống đã cập nhật giao thành ...
+  --> Đánh giá: 2/2 điểm (Chứa chunk chuẩn: True, Gold Rank: 1)
+
+[QUERY 5] Trường hợp người mua khiếu nại hoàn tiền dưới 50% giá trị sản phẩm thì Shopee xử lý thế nào đối với số dư tài khoản người bán?
+  Target Document : seller-return-refund-obligations.md
+  Metadata Filter : {'audience': 'seller'}
+  Gold Answer     : Shopee có thể cấn trừ phần chênh lệch từ Số dư Tài khoản Shopee của người bán để thanh toán cho người mua mà không cần thêm chấp thuận.
+  --- Top-3 Retrieval Results ---
+    1. score=0.8896 ★ [GOLD MATCH] id=seller-return-refund-obligations#3 | ## Số tiền hoàn  Khi có phương án hoàn tiền, người bán cần bảo đảm số tiền phù hợp với quyết định trên hệ thống. Chính sách nêu rằng nếu ngư...
+    2. score=0.7398 ✔ [SAME DOC] id=seller-return-refund-obligations#1 | ## Phối hợp giải quyết yêu cầu  Người bán cần phối hợp cung cấp thông tin và xử lý yêu cầu Trả hàng/Hoàn tiền trên hệ thống. Shopee có quyền...
+    3. score=0.7087 ✔ [SAME DOC] id=seller-return-refund-obligations#4 | ## Chi phí vận chuyển trả hàng  Trong trường hợp người mua tự sắp xếp vận chuyển và đáp ứng điều kiện hỗ trợ, chi phí gửi trả có thể được Sh...
+  --> Đánh giá: 2/2 điểm (Chứa chunk chuẩn: True, Gold Rank: 1)
+
+--------------------------------------------------------------------------------
+[A/B TESTING DÀNH CHO CÂU HỎI 5 — HIỆU QUẢ CỦA METADATA FILTERING]
+Query: Trường hợp người mua khiếu nại hoàn tiền dưới 50% giá trị sản phẩm thì Shopee xử lý thế nào đối với số dư tài khoản người bán?
+
+1. Khi KHÔNG dùng filter (metadata_filter=None):
+   1. doc_id=seller-return-refund-obligations (aud=seller) score=0.8896 | ## Số tiền hoàn
+
+Khi có phương án hoàn tiền, người bán cần bảo đảm số tiền phù hợp với quyết định tr...
+   2. doc_id=return-eligibility (aud=buyer) score=0.7531 | ## Kết quả có thể nhận
+
+Tùy tình huống, yêu cầu hợp lệ có thể dẫn đến hoàn tiền không cần trả hàng h...
+   3. doc_id=refund-methods-and-time (aud=buyer) score=0.7402 | # Phương thức và thời gian nhận tiền hoàn
+
+Thời gian được tính sau khi Shopee chấp nhận hoàn tiền và...
+
+2. Khi CÓ filter (metadata_filter={'audience': 'seller'}):
+   1. doc_id=seller-return-refund-obligations (aud=seller) score=0.8896 | ## Số tiền hoàn
+
+Khi có phương án hoàn tiền, người bán cần bảo đảm số tiền phù hợp với quyết định tr...
+   2. doc_id=seller-return-refund-obligations (aud=seller) score=0.7398 | ## Phối hợp giải quyết yêu cầu
+
+Người bán cần phối hợp cung cấp thông tin và xử lý yêu cầu Trả hàng/...
+   3. doc_id=seller-return-refund-obligations (aud=seller) score=0.7087 | ## Chi phí vận chuyển trả hàng
+
+Trong trường hợp người mua tự sắp xếp vận chuyển và đáp ứng điều kiệ...
+================================================================================
+TỔNG KẾT: Điểm chất lượng truy xuất: 9/10 điểm
+Số câu hỏi có chunk liên quan trong Top-3: 4/5 câu
+================================================================================
